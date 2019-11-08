@@ -6,7 +6,7 @@ module.exports = {
   findSteps,
   add,
   update,
-  // remove
+  remove
 };
 
 function find() {
@@ -38,4 +38,10 @@ function update(changes, id) {
   return db('recipes')
     .where({ id })
     .update(changes);
+};
+
+function remove(id) {
+  return db('recipes')
+    .where({ id })
+    .delete();
 };

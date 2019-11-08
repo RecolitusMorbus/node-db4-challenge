@@ -82,4 +82,26 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  Recipes.findById(id)
+    .then(recipe => {
+      if(recipe) {
+        Recipes.remove(id)
+          .then(deletedRecipe => {
+            res.status(200).json({ remove: deletedRecipe });
+          })
+          .catch(err => {
+            res.status(500).json({ err: 'An error prevented the recipe from being deleted.' })
+          })
+      } else {
+        res.status(404).json({ message: 'Yo, there ain\'t no trash, here.' });
+      };
+    })
+    .catch(err => {
+      res.status(500).json({ err: 'An error prevented the recipe from retrieval.' });
+    });
+});
+
 module.exports = router;
