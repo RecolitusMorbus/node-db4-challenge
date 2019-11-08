@@ -4,16 +4,13 @@ exports.seed = function(knex) {
     .then(function() {
       return knex("recipes").insert([
         {
-          recipe_name: "Grannys Tacos",
-          dish_id: 1
+          recipe_name: "Grannys Tacos"
         },
         {
-          recipe_name: "TexMex Tacos",
-          dish_id: 1
+          recipe_name: "Balut"
         },
         {
-          recipe_name: "My Tacos",
-          dish_id: 1
+          recipe_name: "I don't know what you want from me"
         }
       ]);
     });
